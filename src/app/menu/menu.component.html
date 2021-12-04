@@ -1,4 +1,9 @@
-<div>
-    <label for="name">Here name: </label>
-    <input id="name" [(ngModel)]="item.name" placeholder="name">
-</div>
+<h2>My Items</h2>
+<ul class="items">
+    <li *ngFor="let item of items">
+        <div (click)=addItem(item.id)>
+            <h2>{{item.name}}</h2>
+            <h3>{{item.price | currency}}</h3>
+        </div>
+    </li>
+</ul>

@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Item } from '../item';
 import { ItemService } from '../item.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
+export class DashboardComponent implements OnInit {
 
-export class MenuComponent implements OnInit {
   items: Item[] = [];
 
   constructor(private itemService: ItemService) { }
@@ -20,11 +19,7 @@ export class MenuComponent implements OnInit {
 
   getItems(): void {
     this.itemService.getItems()
-        .subscribe(items => this.items = items);
-  }
-
-  addItem(id: number): void {
-    this.itemService.addCartItem(id);
+        .subscribe(items => this.items = items.slice(1, 5));
   }
 
 }

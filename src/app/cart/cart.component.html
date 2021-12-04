@@ -1,0 +1,7 @@
+<div class="checkout" (click)="checkout()">Checkout</div>
+<h2>Total {{cartItemsTotal | currency}}</h2>
+<ul>
+    <li *ngFor="let item of cartItems">
+        <span>{{item.name}} ... {{item.price | currency}}</span>
+    </li>
+</ul>

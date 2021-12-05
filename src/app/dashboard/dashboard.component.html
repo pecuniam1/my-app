@@ -1,7 +1,19 @@
-<h2>Top Items</h2>
-<div class="items-menu">
-    <a *ngFor="let item of items"
-    routerLink="/detail/{{item.id}}">
-        {{item.name}}
-    </a>
+<div class="dashboard">
+
+    <div>
+        <h2>Enter your details:</h2>
+        <h3>Use: 0 as both number and password</h3>
+    </div>
+    
+    <div *ngIf="alert" style="justify-content: center;" class="alert alert-danger">The password and/or server number is wrong! Try the number 0 for BOTH.</div>
+    <div class="input-group input-group-lg">
+        <input autofocus id="serverNameInput" name="serverNameInput" [(ngModel)]="serverNumber" type="text" class="form-control" placeholder="Server Number" (keyup.enter)="keytab($event)">
+    </div>
+    
+    <div class="input-group input-group-lg">
+        <input id="serverPasswordInput" name="serverPasswordInput" [(ngModel)]="serverPassword" type="text" class="form-control" placeholder="Server Password" (keyup.enter)="keytab($event)">
+    </div>
+    
+    <button style="margin-top:10px" class="btn btn-outline-secondary" type="button" (click)="login()">Button</button>
+
 </div>

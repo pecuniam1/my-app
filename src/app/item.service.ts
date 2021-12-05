@@ -42,7 +42,6 @@ export class ItemService {
   }
 
   getCartItemsTotal(): Observable<number> {
-    if (CART_ITEMS.length <= 0) return of(0);
     const total = of(CART_ITEMS.map(i => i.price).reduce((a, b) => a + b));
     return total;
   }

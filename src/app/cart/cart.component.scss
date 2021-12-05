@@ -18,5 +18,10 @@ ul {
 
 li {
     list-style-type: none;
-    padding: 10px 0;
+    padding: 3px 0;
+    span {
+        background-color: red;
+        padding: 3px;
+        cursor: pointer;
+    }
 }

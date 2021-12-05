@@ -1,15 +1,16 @@
-.items {
-    margin: 0 0 2em 0;
+ul.items {
+    display: flex;
+    flex-wrap: wrap;
     list-style-type: none;
-    padding: 0;
-    width: 15em;
   }
   .items li {
     cursor: pointer;
-    position: relative;
-    left: 0;
+    margin: 4px;
     background-color: #EEE;
     border-radius: 4px;
+    text-align: center;
+    min-width: 100px;
+    padding: 0 10px;
   }
   .items li:hover {
     color: #2c3a41;
@@ -27,7 +28,4 @@
   .items li.selected:active {
     background-color: black;
     color: white;
-  }
-  input {
-    padding: .5rem;
   }

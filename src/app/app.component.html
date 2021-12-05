@@ -1,15 +1,16 @@
 <h1>{{title}}</h1>
-<nav>
+<h2 *ngIf="loggedIn" (click)="logout()">Click here to logout</h2>
+<!-- <nav>
     <a routerLink="/menu">Menu</a>
     <a routerLink="/dashboard">Dashboard</a>
-</nav>
+</nav> -->
 
 <div class="wrapper">
-    <div style="width:70%;float:left;background-color:orange;">
+    <div [ngClass]="routerClasses()">
         <router-outlet></router-outlet>
     </div>
     <!--<app-messages></app-messages>-->
-    <div style="width:30%;float:left;background-color:lightcyan;">
+    <div [ngClass]="cartClasses()">
         <app-cart></app-cart>
     </div>
 </div>

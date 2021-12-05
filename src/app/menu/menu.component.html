@@ -1,9 +1,10 @@
-<h2>My Items</h2>
-<ul class="items">
-    <li *ngFor="let item of items">
-        <div (click)=addItem(item.id)>
-            <h2>{{item.name}}</h2>
-            <h3>{{item.price | currency}}</h3>
-        </div>
-    </li>
-</ul>
+<div style="background-color: purple;">
+    <h2>My Items</h2>
+    <ul class="items">
+        <li *ngFor="let item of items">
+            <div (click)=addItem(item.id)>
+                <h2>{{item.name}}</h2>
+            </div>
+        </li>
+    </ul>
+</div>

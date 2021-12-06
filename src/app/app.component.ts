@@ -53,14 +53,14 @@ export class AppComponent implements OnDestroy {
   }
 
   routerClasses(): string {
-    return "half_and_half";
+    return "wrapper_router_with_cart";
     return this.loggedIn
     ? "wrapper_router_with_cart"
     : "wrapper_router_no_cart";
   }
 
   cartClasses(): string {
-    return "half_and_half";
+    return "wrapper_cart_with_cart";
     return this.loggedIn
     ? "wrapper_cart_with_cart"
     : "wrapper_cart_no_cart"

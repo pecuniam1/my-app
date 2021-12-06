@@ -1,15 +1,44 @@
-<div class="checkout" (click)="checkout()">Checkout</div>
+<!-- <div class="checkout" (click)="checkout()">Checkout</div>
 <button class="btn btn-lg bt-outline-primary" (click)="open(content)">Checkout</button>
 <h2>Total {{cartItemsTotal | currency}}</h2>
 <ul>
     <li *ngFor="let item of cartItems; index as i">
         <span (click)="itemClick(i)">{{item.name}} ... {{item.price | currency}}</span>
     </li>
-</ul>
+</ul> -->
+<div id="cart-wrapper">
+  <!-- HEADER -->
+  <div id="header">
+    <p><span>Server Name:</span><span>Bob Smith</span></p>
+    <p><span>Order:</span><span>4525</span></p>
+    <p><span>Table:</span><span>13</span></p>
+  </div>
 
+  <!-- List of Items -->
+  <ul>
+    <li *ngFor="let item of cartItems; index as i; trackBy: updateTotals">
+      <p (click)="itemClick(i)">
+        <span>{{item.name}}</span>
+        <span>{{item.price | currency}}</span>          
+      </p>
+    </li>
+  </ul>
+
+  <!-- Bottom Area -->
+  <div id="cart-bottom">
+    <p><span>Sub Total:</span>{{ cartItemsTotal }}</p>
+    <p><span>Taxes:</span>$2.35</p>
+    <p><span>Total:</span>$37.56</p>
+
+  </div>
+
+</div>
+
+
+<!-- Modal -->
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Payment Menu</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -17,24 +46,24 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
         <div class="input-group">
-          Your total is $3.556
+          <button type="button" class="btn btn-outline-dark" (click)="pay('credit');modal.close('payed with credit')">Pay with Credit Card</button>
+          <button type="button" class="btn btn-outline-dark" (click)="pay('cash');modal.close('payed with cash')">Pay with Cash</button>
         </div>
       </div>
-      <div>
+      <!-- <div>
         <label for="input">Enter Cash Amount</label>
         <input>
       </div>
       <div>
         <label for="input">Enter Card Number</label>
         <input>
-      </div>
+      </div> -->
     </form>
   </div>
   <div class="modal-footer">
-    <button (click)="pay('credit');modal.close('payed with credit')">Credit Card</button>
+    <!-- <button (click)="pay('credit');modal.close('payed with credit')">Credit Card</button>
     <button (click)="pay('cash');modal.close('payed with cash')">Cash</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
   </div>
 </ng-template>

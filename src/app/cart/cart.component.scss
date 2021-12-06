@@ -1,9 +1,26 @@
+div#cart-wrapper {
+    height: calc(100vh - 70px);
+    position: relative;
+}
+
 .checkout {
     padding:8px;
     text-align: center;
     font-size: 2rem;
     cursor: pointer;
     background-color: lightcoral;
+}
+
+div#header {
+    outline: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    p {
+        margin: 1px;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 h2 {
@@ -14,14 +31,24 @@ h2 {
 ul {
     padding: 0 5px;
     text-align: left;
+    li {
+        list-style-type: none;  
+        p {
+            margin: 3px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }
 
-li {
-    list-style-type: none;
-    padding: 3px 0;
-    span {
-        background-color: red;
-        padding: 3px;
-        cursor: pointer;
+div#cart-bottom {
+    width: 100%;
+    outline: 1px solid black;
+    position: absolute;
+    bottom: 0;
+    p {
+        margin: 1px;
+        display: flex;
+        justify-content: space-between;
     }
 }

@@ -12,3 +12,10 @@ export const ITEMS: Item[] = [
 
 // this is what is the transaction list
 export var CART_ITEMS: Item[] = [];
+
+export class MenuItems {
+
+    clearCart(): void {
+        CART_ITEMS = [];
+    }
+}

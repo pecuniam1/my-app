@@ -7,23 +7,25 @@ h2 {
     cursor: pointer;
 }
 
-div.half_and_half {
-    width:40%;
-    float:left;
+div.wrapper {
+    margin-left: 50px;
+    margin-right: 50px;
+    height: calc(100vh - 70px);
+    background-color: lightseagreen;
 }
 
 div.wrapper_router_with_cart {
-    width: 70%;
+    width: 75%;
     float:left;
 }
 
 div.wrapper_router_no_cart {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
 div.wrapper_cart_with_cart {
-    width: 30%;
+    width: 25%;
     float:left;
     background-color:lightcyan;
 }

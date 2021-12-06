@@ -35,16 +35,24 @@ export class ItemService {
     CART_ITEMS.push(ITEMS[id]);
   }
 
+  removeCartItem(index: number): void {
+    CART_ITEMS.splice(index, 1);
+  }
+
+  emptyCart(): void {
+    CART_ITEMS.length = 0;
+  }
+
   getCartItems(): Observable<Item[]> {
     const items = of(CART_ITEMS);
     this.messageService.add('Get cart items.');
     return items;
   }
 
-  getCartItemsTotal(): Observable<number> {
-    const total = of(CART_ITEMS.map(i => i.price).reduce((a, b) => a + b));
-    return total;
-  }
+  // getCartItemsTotal(): Observable<number> {
+  //   const total = of(CART_ITEMS.map(i => i.price).reduce((a, b) => a + b));
+  //   return total;
+  // }
   
 
 }

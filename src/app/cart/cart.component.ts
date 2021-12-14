@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Item } from '../item';
 import { ItemService } from '../item.service';
-import { CART_ITEMS } from '../menu-items';
 
 @Component({
   selector: 'app-cart',
@@ -18,25 +17,12 @@ export class CartComponent implements OnInit {
   cartTotal: number = 0;
 
   constructor(private itemService: ItemService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) {
+     }
 
   ngOnInit(): void {
     this.getCartItems();
-    //this.getCartItemsTotal();
-  }
-
-  updateTotals(): void {
-    let price: number = 0;
-    if (this.cartItems !== undefined) {
-      this.cartItems.forEach(element => {
-        price += element.price;
-      });
-      this.cartItemsTotal = price;
-    }
-    else {
-      console.log("called");
-      console.log(this.cartItems)
-    }
+    this.getCartItemsTotal();
   }
 
   pay(paymentType: string): void {
@@ -51,21 +37,28 @@ export class CartComponent implements OnInit {
 
   itemClick(element: number): void {
     this.cartItems.splice(element, 1);
+    if (this.cartItems.length <= 0) {
+      this.cartItemsTotal = 0;
+      return;
+    }
+    this.cartItemsTotal = this.cartItems.map(ci => ci.price).reduce((a, b) => a + b);
+  }
+
+  update(): void {
+    console.log("blah");
   }
 
   checkout(): void {
     console.log("you checked out");
-  } 
-  
+  }
+
+  // cart  
   getCartItems(): void {
     this.itemService.getCartItems()
-      .subscribe(cartItems => this.cartItems = cartItems);
+      .subscribe(cartItems => {
+        this.cartItems = cartItems
+      });
   };
-
-  // getCartItemsTotal(): void {
-  //   this.itemService.getCartItemsTotal()
-  //     .subscribe(cartItemsTotal => this.cartItemsTotal = cartItemsTotal);
-  // };
 
 
 

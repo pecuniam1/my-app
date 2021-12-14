@@ -8,6 +8,7 @@ import { MessageService } from './message.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ItemService {
 
   constructor(private messageService: MessageService) { }
@@ -26,7 +27,6 @@ export class ItemService {
     this.messageService.add(`ItemService: fetched item id=${id}`);
     return of(item);
   }
-
 
   // cart
 
@@ -47,12 +47,6 @@ export class ItemService {
     const items = of(CART_ITEMS);
     this.messageService.add('Get cart items.');
     return items;
-  }
-
-  // getCartItemsTotal(): Observable<number> {
-  //   const total = of(CART_ITEMS.map(i => i.price).reduce((a, b) => a + b));
-  //   return total;
-  // }
-  
+  } 
 
 }

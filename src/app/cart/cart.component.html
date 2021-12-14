@@ -16,7 +16,7 @@
 
   <!-- List of Items -->
   <ul>
-    <li *ngFor="let item of cartItems; index as i; trackBy: updateTotals">
+    <li *ngFor="let item of cartItems; index as i;">
       <p (click)="itemClick(i)">
         <span>{{item.name}}</span>
         <span>{{item.price | currency}}</span>          
@@ -26,7 +26,7 @@
 
   <!-- Bottom Area -->
   <div id="cart-bottom">
-    <p><span>Sub Total:</span>{{ cartItemsTotal }}</p>
+    <p><span>Sub Total:</span>{{ cartItemsTotal | currency }}</p>
     <p><span>Taxes:</span>$2.35</p>
     <p><span>Total:</span>$37.56</p>
 

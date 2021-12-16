@@ -12,17 +12,9 @@ export let BrowserRefresh = false;
 
 export class AppComponent implements OnDestroy {
 
-  subscription: Subscription;
   loggedIn: boolean = false;
 
-  constructor(private router: Router) {
-    this.subscription = router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        //this.logout();
-      }
-    })
-
-  }
+  constructor(private router: Router) { }
 
   ngOnDestroy(): void {
     throw new Error('Method not implemented.');
@@ -53,14 +45,12 @@ export class AppComponent implements OnDestroy {
   }
 
   routerClasses(): string {
-    return "wrapper_router_with_cart";
     return this.loggedIn
     ? "wrapper_router_with_cart"
     : "wrapper_router_no_cart";
   }
 
   cartClasses(): string {
-    return "wrapper_cart_with_cart";
     return this.loggedIn
     ? "wrapper_cart_with_cart"
     : "wrapper_cart_no_cart"

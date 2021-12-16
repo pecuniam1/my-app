@@ -1,9 +1,5 @@
+<h2 *ngIf="loggedIn" (click)="logout()"><span>Click here to logout</span></h2>
 <h1>{{title}}</h1>
-<h2 *ngIf="loggedIn" (click)="logout()">Click here to logout</h2>
-<!-- <nav>
-    <a routerLink="/menu">Menu</a>
-    <a routerLink="/dashboard">Dashboard</a>
-</nav> -->
 
 <div class="wrapper">
     <div [ngClass]="routerClasses()">

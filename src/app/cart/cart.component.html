@@ -1,12 +1,7 @@
-<!-- <div class="checkout" (click)="checkout()">Checkout</div>
-<button class="btn btn-lg bt-outline-primary" (click)="open(content)">Checkout</button>
-<h2>Total {{cartItemsTotal | currency}}</h2>
-<ul>
-    <li *ngFor="let item of cartItems; index as i">
-        <span (click)="itemClick(i)">{{item.name}} ... {{item.price | currency}}</span>
-    </li>
-</ul> -->
 <div id="cart-wrapper">
+  <button class="btn btn-lg btn-success" (click)="open(content)">Click to Checkout</button>
+  <button class="btn btn-lg btn-danger" (click)="clearCart()">Clear Cart</button>
+
   <!-- HEADER -->
   <div id="header">
     <p><span>Server Name:</span><span>Bob Smith</span></p>
@@ -15,9 +10,10 @@
   </div>
 
   <!-- List of Items -->
+  <h4>Click item to delete</h4>
   <ul>
     <li *ngFor="let item of cartItems; index as i;">
-      <p (click)="itemClick(i)">
+      <p (click)="deleteItem(i)">
         <span>{{item.name}}</span>
         <span>{{item.price | currency}}</span>          
       </p>
@@ -26,12 +22,11 @@
 
   <!-- Bottom Area -->
   <div id="cart-bottom">
-    <p><span>Sub Total:</span>{{ cartItemsTotal | currency }}</p>
-    <p><span>Taxes:</span>$2.35</p>
-    <p><span>Total:</span>$37.56</p>
-
+    <p><span>Total Items: </span>{{ getTotalItems() }}</p>
+    <p><span>Sub Total:</span>{{ getSubtotal() | currency }}</p>
+    <p><span>Taxes (7.5%):</span>{{ getTaxes() | currency }}</p>
+    <p><span>Total:</span>{{ getTotal() | currency }}</p>
   </div>
-
 </div>
 
 
@@ -51,19 +46,6 @@
           <button type="button" class="btn btn-outline-dark" (click)="pay('cash');modal.close('payed with cash')">Pay with Cash</button>
         </div>
       </div>
-      <!-- <div>
-        <label for="input">Enter Cash Amount</label>
-        <input>
-      </div>
-      <div>
-        <label for="input">Enter Card Number</label>
-        <input>
-      </div> -->
     </form>
-  </div>
-  <div class="modal-footer">
-    <!-- <button (click)="pay('credit');modal.close('payed with credit')">Credit Card</button>
-    <button (click)="pay('cash');modal.close('payed with cash')">Cash</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
   </div>
 </ng-template>

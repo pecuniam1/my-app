@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -15,8 +13,6 @@ import { CartComponent } from './cart/cart.component';
   declarations: [
     AppComponent,
     MenuComponent,
-    ItemDetailComponent,
-    MessagesComponent,
     DashboardComponent,
     CartComponent,
   ],

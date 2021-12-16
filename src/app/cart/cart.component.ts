@@ -11,48 +11,14 @@ import { ItemService } from '../item.service';
 export class CartComponent implements OnInit {
 
   cartItems: Item[] = [];
-  cartItemsTotal: number = 0;
-  cartTaxes: number = 0;
-  cartTaxPercent: number = 0.075;
-  cartTotal: number = 0;
+  TaxPercent: number = 0.075;  // this is 7.5%
 
-  constructor(private itemService: ItemService,
-    private modalService: NgbModal) {
-     }
+  constructor(private itemService: ItemService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getCartItems();
-    this.getCartItemsTotal();
   }
-
-  pay(paymentType: string): void {
-    console.log(`you have paid with ${paymentType}`);
-    this.itemService.emptyCart();
-    this.showReceipt();
-  }
-
-  showReceipt(): void {
-
-  }
-
-  itemClick(element: number): void {
-    this.cartItems.splice(element, 1);
-    if (this.cartItems.length <= 0) {
-      this.cartItemsTotal = 0;
-      return;
-    }
-    this.cartItemsTotal = this.cartItems.map(ci => ci.price).reduce((a, b) => a + b);
-  }
-
-  update(): void {
-    console.log("blah");
-  }
-
-  checkout(): void {
-    console.log("you checked out");
-  }
-
-  // cart  
+  
   getCartItems(): void {
     this.itemService.getCartItems()
       .subscribe(cartItems => {
@@ -60,10 +26,50 @@ export class CartComponent implements OnInit {
       });
   };
 
+  // Cart functions *****************************************
+  clearCart() {
+    this.itemService.emptyCart();
+  }
 
+  deleteItem(element: number): void {
+    this.cartItems.splice(element, 1);    
+  }
 
-  // modal
-  title: string = "appBootstrap";
+  // this is the bottom portion of the cart with the subtotal, taxes, and total
+
+  getTotalItems() {
+    if (this.cartItems == undefined) return 0;
+    else return this.cartItems.length;
+  }
+
+  getSubtotal() {
+    if (this.cartItems == undefined) return 0;
+    else {
+      var number = 0;
+      this.cartItems.forEach(element => {
+        number += element.price
+      });
+      return number;
+    }
+  }
+
+  getTaxes() {
+    return this.getSubtotal() * this.TaxPercent;
+  }
+
+  getTotal() {
+    return this.getSubtotal() + this.getTaxes();
+  }
+
+  // These are the modal functions ***********************************************
+  pay(paymentType: string): void {
+    console.log(`you have paid with ${paymentType}`);
+    this.itemService.emptyCart();
+    this.showReceipt();
+  }
+
+  showReceipt(): void { }
+
   closeResult: string = "";
 
   open(content: any): void {
@@ -86,5 +92,4 @@ export class CartComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
-
 }

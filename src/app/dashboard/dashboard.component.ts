@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems();
+    this.itemService.emptyCart();
   }
 
   keytab(event: any): void {

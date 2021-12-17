@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 export let BrowserRefresh = false;
 
@@ -30,6 +29,7 @@ export class AppComponent implements OnDestroy {
     this.hideCart();
     this.router.navigate(['']);
     this.loggedIn = false;
+    
   }
 
   isCartVisible: boolean = false;
